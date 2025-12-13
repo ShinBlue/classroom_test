@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>絵カード表示アプリ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>絵カード</h1>
+        
+        <div class="controls">
+            <button id="prevBtn" class="btn btn-prev">← 前へ</button>
+            <span id="cardCounter" class="counter">1 / 6</span>
+            <button id="nextBtn" class="btn btn-next">次へ →</button>
+        </div>
+
+        <div class="card-container">
+            <div id="card" class="card">
+                <div class="card-image">
+                    <span id="emoji">🍎</span>
+                </div>
+                <div class="card-text">
+                    <p id="cardName">りんご</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button id="shuffleBtn" class="btn btn-shuffle">シャッフル</button>
+            <button id="resetBtn" class="btn btn-reset">リセット</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
