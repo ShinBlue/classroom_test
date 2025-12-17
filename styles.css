@@ -79,12 +79,17 @@ h1 {
 
 .card-text {
     text-align: center;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-text p {
     color: white;
     font-size: 24px;
     font-weight: bold;
+    margin: 0;
 }
 
 .btn {
