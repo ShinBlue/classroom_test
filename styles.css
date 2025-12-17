@@ -53,12 +53,12 @@ h1 {
 }
 
 .card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #d3d3d3 0%, #c0c0c0 100%);
     border-radius: 15px;
     padding: 40px;
     width: 100%;
     max-width: 300px;
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 20px rgba(150, 150, 150, 0.3);
     transition: transform 0.3s ease;
 }
 
@@ -91,7 +91,7 @@ h1 {
 }
 
 .card-text p {
-    color: white;
+    color: #333;
     font-size: 24px;
     font-weight: bold;
     margin: 0;
