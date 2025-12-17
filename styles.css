@@ -215,9 +215,12 @@ h1 {
     width: 100%;
 }
 
-.grid-container.cards-2,
+.grid-container.cards-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .grid-container.cards-3 {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .grid-container.cards-4 {
@@ -232,12 +235,8 @@ h1 {
     grid-template-columns: repeat(4, 1fr);
 }
 
-.grid-container.cards-10 {
-    grid-template-columns: repeat(5, 1fr);
-}
-
 .grid-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #d3d3d3 0%, #c0c0c0 100%);
     border-radius: 12px;
     padding: 20px;
     display: flex;
@@ -245,7 +244,7 @@ h1 {
     align-items: center;
     justify-content: center;
     min-height: 120px;
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 5px 15px rgba(150, 150, 150, 0.3);
     transition: transform 0.3s ease;
 }
 
@@ -259,7 +258,7 @@ h1 {
 }
 
 .grid-name {
-    color: white;
+    color: #333;
     font-size: 14px;
     font-weight: bold;
     text-align: center;
