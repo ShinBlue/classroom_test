@@ -88,6 +88,9 @@ function displayMultipleCards() {
     document.getElementById('card').style.display = 'none';
     gridContainer.style.display = 'grid';
     
+    // グリッドレイアウトクラスを更新
+    gridContainer.className = `grid-container cards-${cardsPerPage}`;
+    
     const startIndex = currentIndex;
     const endIndex = Math.min(startIndex + cardsPerPage, cards.length);
     

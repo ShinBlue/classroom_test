@@ -215,6 +215,27 @@ h1 {
     width: 100%;
 }
 
+.grid-container.cards-2,
+.grid-container.cards-3 {
+    grid-template-columns: 1fr;
+}
+
+.grid-container.cards-4 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-container.cards-6 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-container.cards-8 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-container.cards-10 {
+    grid-template-columns: repeat(5, 1fr);
+}
+
 .grid-card {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 12px;
