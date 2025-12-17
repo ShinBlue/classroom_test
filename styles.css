@@ -62,6 +62,11 @@ h1 {
     transition: transform 0.3s ease;
 }
 
+.card:has(+ #gridContainer[style*="display: grid"]),
+.card-image:has(+ span[style*="display: none"]) {
+    display: none;
+}
+
 .card:hover {
     transform: translateY(-5px);
 }

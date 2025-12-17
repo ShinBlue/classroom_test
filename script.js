@@ -68,7 +68,9 @@ function updateDisplay() {
 function displaySingleCard() {
     const card = cards[currentIndex];
     emojiElement.textContent = card.emoji;
+    emojiElement.style.display = '';
     cardNameElement.textContent = showText ? card.name : '';
+    cardNameElement.style.display = '';
     cardCounterElement.textContent = `${currentIndex + 1} / ${cards.length}`;
     
     // ボタンの有効/無効を切り替え
@@ -76,12 +78,14 @@ function displaySingleCard() {
     nextBtn.disabled = currentIndex === cards.length - 1;
     
     gridContainer.style.display = 'none';
+    document.getElementById('card').style.display = '';
 }
 
 // 複数枚表示モード
 function displayMultipleCards() {
     emojiElement.style.display = 'none';
     cardNameElement.style.display = 'none';
+    document.getElementById('card').style.display = 'none';
     gridContainer.style.display = 'grid';
     
     const startIndex = currentIndex;
