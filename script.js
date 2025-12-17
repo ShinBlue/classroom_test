@@ -1,14 +1,40 @@
 // 絵カードのデータ
-const cards = [
+const originalCards = [
     { emoji: '🍎', name: 'りんご' },
     { emoji: '🍌', name: 'バナナ' },
     { emoji: '🍊', name: 'みかん' },
     { emoji: '🍕', name: 'ピザ' },
     { emoji: '🐱', name: 'ねこ' },
-    { emoji: '🐶', name: 'いぬ' }
+    { emoji: '🐶', name: 'いぬ' },
+    { emoji: '🍇', name: 'ぶどう' },
+    { emoji: '🍓', name: 'いちご' },
+    { emoji: '🍉', name: 'すいか' },
+    { emoji: '🥕', name: 'にんじん' },
+    { emoji: '🌽', name: 'とうもろこし' },
+    { emoji: '🥦', name: 'ブロッコリー' },
+    { emoji: '🍎', name: 'りんご' },
+    { emoji: '🍇', name: 'ぶどう' },
+    { emoji: '🌻', name: 'ひまわり' },
+    { emoji: '🌹', name: 'バラ' },
+    { emoji: '🌸', name: 'さくら' },
+    { emoji: '🦁', name: 'ライオン' },
+    { emoji: '🐘', name: 'ぞう' },
+    { emoji: '🦒', name: 'キリン' },
+    { emoji: '🦓', name: 'しまうま' },
+    { emoji: '🐠', name: 'さかな' },
+    { emoji: '🦋', name: 'ちょうちょ' },
+    { emoji: '🐝', name: 'ミツバチ' },
+    { emoji: '🌲', name: 'あさひ' },
+    { emoji: '🏔️', name: 'やま' },
+    { emoji: '🏖️', name: 'ビーチ' },
+    { emoji: '🌊', name: 'なみ' },
+    { emoji: '⛅', name: 'くも' },
+    { emoji: '🌈', name: '虹' }
 ];
 
+let cards = [...originalCards];
 let currentIndex = 0;
+let showText = true;
 
 // DOM要素の取得
 const emojiElement = document.getElementById('emoji');
@@ -18,6 +44,7 @@ const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const shuffleBtn = document.getElementById('shuffleBtn');
 const resetBtn = document.getElementById('resetBtn');
+const textToggleBtn = document.getElementById('textToggleBtn');
 
 // 初期化
 function init() {
@@ -29,7 +56,7 @@ function init() {
 function updateCard() {
     const card = cards[currentIndex];
     emojiElement.textContent = card.emoji;
-    cardNameElement.textContent = card.name;
+    cardNameElement.textContent = showText ? card.name : '';
     cardCounterElement.textContent = `${currentIndex + 1} / ${cards.length}`;
     
     // ボタンの有効/無効を切り替え
@@ -66,20 +93,17 @@ shuffleBtn.addEventListener('click', () => {
 
 // リセットボタン
 resetBtn.addEventListener('click', () => {
-    cards.sort((a, b) => {
-        // 元の順序に戻す（元のデータを使用）
-        const originalCards = [
-            { emoji: '🍎', name: 'りんご' },
-            { emoji: '🍌', name: 'バナナ' },
-            { emoji: '🍊', name: 'みかん' },
-            { emoji: '🍕', name: 'ピザ' },
-            { emoji: '🐱', name: 'ねこ' },
-            { emoji: '🐶', name: 'いぬ' }
-        ];
-        return originalCards.indexOf(originalCards.find(card => card.name === a.name)) - 
-               originalCards.indexOf(originalCards.find(card => card.name === b.name));
-    });
+    cards = [...originalCards];
     currentIndex = 0;
+    updateCard();
+});
+
+// 文字表示切り替えボタン
+textToggleBtn.addEventListener('click', () => {
+    showText = !showText;
+    textToggleBtn.textContent = showText ? '文字: ON' : '文字: OFF';
+    textToggleBtn.classList.toggle('text-on', showText);
+    textToggleBtn.classList.toggle('text-off', !showText);
     updateCard();
 });
 

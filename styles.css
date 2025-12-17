@@ -145,6 +145,30 @@ h1 {
     transform: scale(1.05);
 }
 
+.btn-text {
+    background-color: #ff6b6b;
+    color: white;
+    flex: 1;
+}
+
+.btn-text.text-on {
+    background-color: #51cf66;
+}
+
+.btn-text.text-on:hover {
+    background-color: #40c057;
+    transform: scale(1.05);
+}
+
+.btn-text.text-off {
+    background-color: #ff6b6b;
+}
+
+.btn-text.text-off:hover {
+    background-color: #ff5252;
+    transform: scale(1.05);
+}
+
 @media (max-width: 600px) {
     .container {
         padding: 20px 20px;
