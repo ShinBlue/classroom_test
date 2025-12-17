@@ -35,6 +35,7 @@ const originalCards = [
 let cards = [...originalCards];
 let currentIndex = 0;
 let showText = true;
+let cardsPerPage = 1;
 
 // DOM要素の取得
 const emojiElement = document.getElementById('emoji');
@@ -45,15 +46,26 @@ const nextBtn = document.getElementById('nextBtn');
 const shuffleBtn = document.getElementById('shuffleBtn');
 const resetBtn = document.getElementById('resetBtn');
 const textToggleBtn = document.getElementById('textToggleBtn');
+const cardsPerPageSelect = document.getElementById('cardsPerPageSelect');
+const gridContainer = document.getElementById('gridContainer');
 
 // 初期化
 function init() {
     currentIndex = 0;
-    updateCard();
+    updateDisplay();
 }
 
-// カード表示の更新
-function updateCard() {
+// 表示の更新
+function updateDisplay() {
+    if (cardsPerPage === 1) {
+        displaySingleCard();
+    } else {
+        displayMultipleCards();
+    }
+}
+
+// 1枚表示モード
+function displaySingleCard() {
     const card = cards[currentIndex];
     emojiElement.textContent = card.emoji;
     cardNameElement.textContent = showText ? card.name : '';
@@ -62,21 +74,64 @@ function updateCard() {
     // ボタンの有効/無効を切り替え
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex === cards.length - 1;
+    
+    gridContainer.style.display = 'none';
+}
+
+// 複数枚表示モード
+function displayMultipleCards() {
+    emojiElement.style.display = 'none';
+    cardNameElement.style.display = 'none';
+    gridContainer.style.display = 'grid';
+    
+    const startIndex = currentIndex;
+    const endIndex = Math.min(startIndex + cardsPerPage, cards.length);
+    
+    gridContainer.innerHTML = '';
+    for (let i = startIndex; i < endIndex; i++) {
+        const card = cards[i];
+        const cardElement = document.createElement('div');
+        cardElement.className = 'grid-card';
+        cardElement.innerHTML = `
+            <div class="grid-emoji">${card.emoji}</div>
+            ${showText ? `<div class="grid-name">${card.name}</div>` : ''}
+        `;
+        gridContainer.appendChild(cardElement);
+    }
+    
+    const totalPages = Math.ceil(cards.length / cardsPerPage);
+    const currentPage = Math.floor(currentIndex / cardsPerPage) + 1;
+    cardCounterElement.textContent = `ページ ${currentPage} / ${totalPages}`;
+    
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = endIndex >= cards.length;
 }
 
 // 前へボタン
 prevBtn.addEventListener('click', () => {
     if (currentIndex > 0) {
-        currentIndex--;
-        updateCard();
+        if (cardsPerPage === 1) {
+            currentIndex--;
+        } else {
+            currentIndex = Math.max(0, currentIndex - cardsPerPage);
+        }
+        updateDisplay();
     }
 });
 
 // 次へボタン
 nextBtn.addEventListener('click', () => {
-    if (currentIndex < cards.length - 1) {
-        currentIndex++;
-        updateCard();
+    if (cardsPerPage === 1) {
+        if (currentIndex < cards.length - 1) {
+            currentIndex++;
+            updateDisplay();
+        }
+    } else {
+        const nextStart = currentIndex + cardsPerPage;
+        if (nextStart < cards.length) {
+            currentIndex = nextStart;
+            updateDisplay();
+        }
     }
 });
 
@@ -88,14 +143,14 @@ shuffleBtn.addEventListener('click', () => {
         [cards[i], cards[j]] = [cards[j], cards[i]];
     }
     currentIndex = 0;
-    updateCard();
+    updateDisplay();
 });
 
 // リセットボタン
 resetBtn.addEventListener('click', () => {
     cards = [...originalCards];
     currentIndex = 0;
-    updateCard();
+    updateDisplay();
 });
 
 // 文字表示切り替えボタン
@@ -104,7 +159,14 @@ textToggleBtn.addEventListener('click', () => {
     textToggleBtn.textContent = showText ? '文字: ON' : '文字: OFF';
     textToggleBtn.classList.toggle('text-on', showText);
     textToggleBtn.classList.toggle('text-off', !showText);
-    updateCard();
+    updateDisplay();
+});
+
+// 表示枚数選択
+cardsPerPageSelect.addEventListener('change', (e) => {
+    cardsPerPage = parseInt(e.target.value);
+    currentIndex = 0;
+    updateDisplay();
 });
 
 // ページ読み込み時に初期化

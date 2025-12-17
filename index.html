@@ -12,8 +12,21 @@
         
         <div class="controls">
             <button id="prevBtn" class="btn btn-prev">← 前へ</button>
-            <span id="cardCounter" class="counter">1 / 6</span>
+            <span id="cardCounter" class="counter">1 / 30</span>
             <button id="nextBtn" class="btn btn-next">次へ →</button>
+        </div>
+
+        <div class="control-panel">
+            <label for="cardsPerPageSelect">表示枚数:</label>
+            <select id="cardsPerPageSelect" class="select">
+                <option value="1">1枚</option>
+                <option value="2">2枚</option>
+                <option value="3">3枚</option>
+                <option value="4">4枚</option>
+                <option value="6">6枚</option>
+                <option value="8">8枚</option>
+                <option value="10">10枚</option>
+            </select>
         </div>
 
         <div class="card-container">
@@ -25,6 +38,7 @@
                     <p id="cardName">りんご</p>
                 </div>
             </div>
+            <div id="gridContainer" class="grid-container"></div>
         </div>
 
         <div class="buttons">
