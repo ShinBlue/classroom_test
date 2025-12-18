@@ -37,6 +37,31 @@ let currentIndex = 0;
 let showText = true;
 let cardsPerPage = 1;
 
+// 音声合成機能
+function speakText(text) {
+    // 既に再生中の音声があれば停止
+    if (window.currentSpeech) {
+        speechSynthesis.cancel();
+    }
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ja-JP';
+    utterance.rate = 0.9;
+    utterance.pitch = 1.2;
+    
+    // 女性の声を選択
+    const voices = speechSynthesis.getVoices();
+    const femaleVoice = voices.find(voice => voice.name.includes('Female')) || 
+                        voices.find(voice => voice.lang === 'ja-JP') ||
+                        voices[0];
+    if (femaleVoice) {
+        utterance.voice = femaleVoice;
+    }
+    
+    window.currentSpeech = utterance;
+    speechSynthesis.speak(utterance);
+}
+
 // DOM要素の取得
 const emojiElement = document.getElementById('emoji');
 const cardNameElement = document.getElementById('cardName');
@@ -48,6 +73,7 @@ const resetBtn = document.getElementById('resetBtn');
 const textToggleBtn = document.getElementById('textToggleBtn');
 const cardsPerPageSelect = document.getElementById('cardsPerPageSelect');
 const gridContainer = document.getElementById('gridContainer');
+const cardElement = document.getElementById('card');
 
 // 初期化
 function init() {
@@ -78,7 +104,12 @@ function displaySingleCard() {
     nextBtn.disabled = currentIndex === cards.length - 1;
     
     gridContainer.style.display = 'none';
-    document.getElementById('card').style.display = '';
+    cardElement.style.display = '';
+    
+    // クリック時に音声再生
+    cardElement.onclick = () => {
+        speakText(card.name);
+    };
 }
 
 // 複数枚表示モード
@@ -103,6 +134,12 @@ function displayMultipleCards() {
             <div class="grid-emoji">${card.emoji}</div>
             ${showText ? `<div class="grid-name">${card.name}</div>` : ''}
         `;
+        
+        // クリック時に音声再生
+        cardElement.addEventListener('click', () => {
+            speakText(card.name);
+        });
+        
         gridContainer.appendChild(cardElement);
     }
     
