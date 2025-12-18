@@ -67,8 +67,8 @@ h1 {
     display: none;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.card:active {
+    transform: scale(0.98);
 }
 
 .card-image {
@@ -114,10 +114,9 @@ h1 {
     padding: 8px 16px;
 }
 
-.btn-prev:hover,
-.btn-next:hover {
-    background-color: #764ba2;
-    transform: scale(1.05);
+.btn-prev:active,
+.btn-next:active {
+    transform: scale(0.97);
 }
 
 .btn-prev:disabled,
@@ -139,9 +138,8 @@ h1 {
     flex: 1;
 }
 
-.btn-shuffle:hover {
-    background-color: #f073e6;
-    transform: scale(1.05);
+.btn-shuffle:active {
+    transform: scale(0.97);
 }
 
 .btn-reset {
@@ -150,9 +148,8 @@ h1 {
     flex: 1;
 }
 
-.btn-reset:hover {
-    background-color: #26c6da;
-    transform: scale(1.05);
+.btn-reset:active {
+    transform: scale(0.97);
 }
 
 .btn-text {
@@ -165,18 +162,17 @@ h1 {
     background-color: #51cf66;
 }
 
-.btn-text.text-on:hover {
-    background-color: #40c057;
-    transform: scale(1.05);
+.btn-text.text-on:active {
+    transform: scale(0.97);
 }
 
 .btn-text.text-off {
     background-color: #ff6b6b;
 }
 
-.btn-text.text-off:hover {
-    background-color: #ff5252;
-    transform: scale(1.05);
+.btn-text.text-off:active {
+    transform: scale(0.97);
+}
 }
 
 .control-panel {
@@ -248,8 +244,8 @@ h1 {
     transition: transform 0.3s ease;
 }
 
-.grid-card:hover {
-    transform: translateY(-3px);
+.grid-card:active {
+    transform: scale(0.96);
 }
 
 .grid-emoji {
