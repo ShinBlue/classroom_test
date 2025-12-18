@@ -60,6 +60,7 @@ h1 {
     max-width: 300px;
     box-shadow: 0 8px 20px rgba(150, 150, 150, 0.2);
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .card:has(+ #gridContainer[style*="display: grid"]),
@@ -68,7 +69,7 @@ h1 {
 }
 
 .card:active {
-    transform: scale(0.98);
+    transform: scale(0.93);
 }
 
 .card-image {
@@ -116,7 +117,7 @@ h1 {
 
 .btn-prev:active,
 .btn-next:active {
-    transform: scale(0.97);
+    transform: scale(0.92);
 }
 
 .btn-prev:disabled,
@@ -139,7 +140,7 @@ h1 {
 }
 
 .btn-shuffle:active {
-    transform: scale(0.97);
+    transform: scale(0.92);
 }
 
 .btn-reset {
@@ -149,7 +150,7 @@ h1 {
 }
 
 .btn-reset:active {
-    transform: scale(0.97);
+    transform: scale(0.92);
 }
 
 .btn-text {
@@ -163,7 +164,7 @@ h1 {
 }
 
 .btn-text.text-on:active {
-    transform: scale(0.97);
+    transform: scale(0.92);
 }
 
 .btn-text.text-off {
@@ -171,7 +172,7 @@ h1 {
 }
 
 .btn-text.text-off:active {
-    transform: scale(0.97);
+    transform: scale(0.92);
 }
 }
 
@@ -242,10 +243,11 @@ h1 {
     min-height: 120px;
     box-shadow: 0 5px 15px rgba(150, 150, 150, 0.2);
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .grid-card:active {
-    transform: scale(0.96);
+    transform: scale(0.90);
 }
 
 .grid-emoji {
