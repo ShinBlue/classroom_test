@@ -36,6 +36,7 @@ let cards = [...originalCards];
 let currentIndex = 0;
 let showText = true;
 let cardsPerPage = 1;
+let voiceGender = 'female';
 
 // 音声合成機能
 function speakText(text) {
@@ -47,15 +48,22 @@ function speakText(text) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'ja-JP';
     utterance.rate = 0.9;
-    utterance.pitch = 1.2;
+    utterance.pitch = voiceGender === 'female' ? 1.3 : 0.8;
     
-    // 女性の声を選択
+    // 音声を選択
     const voices = speechSynthesis.getVoices();
-    const femaleVoice = voices.find(voice => voice.name.includes('Female')) || 
-                        voices.find(voice => voice.lang === 'ja-JP') ||
-                        voices[0];
-    if (femaleVoice) {
-        utterance.voice = femaleVoice;
+    let selectedVoice = null;
+    
+    if (voiceGender === 'female') {
+        selectedVoice = voices.find(voice => voice.name.includes('Female') || voice.name.includes('女')) ||
+                        voices.find(voice => voice.lang === 'ja-JP');
+    } else {
+        selectedVoice = voices.find(voice => voice.name.includes('Male') || voice.name.includes('男')) ||
+                        voices.find(voice => voice.lang === 'ja-JP');
+    }
+    
+    if (selectedVoice) {
+        utterance.voice = selectedVoice;
     }
     
     window.currentSpeech = utterance;
@@ -72,6 +80,7 @@ const shuffleBtn = document.getElementById('shuffleBtn');
 const resetBtn = document.getElementById('resetBtn');
 const textToggleBtn = document.getElementById('textToggleBtn');
 const cardsPerPageSelect = document.getElementById('cardsPerPageSelect');
+const voiceSelect = document.getElementById('voiceSelect');
 const gridContainer = document.getElementById('gridContainer');
 const cardElement = document.getElementById('card');
 
@@ -211,6 +220,11 @@ cardsPerPageSelect.addEventListener('change', (e) => {
     cardsPerPage = parseInt(e.target.value);
     currentIndex = 0;
     updateDisplay();
+});
+
+// 音声選択
+voiceSelect.addEventListener('change', (e) => {
+    voiceGender = e.target.value;
 });
 
 // ページ読み込み時に初期化
