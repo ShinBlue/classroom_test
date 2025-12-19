@@ -131,7 +131,15 @@ h1 {
     display: flex;
     gap: 15px;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+}
+
+.button-controls-wrapper {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 50px auto;
 }
 
 .btn-shuffle {
@@ -178,19 +186,15 @@ h1 {
 }
 
 .control-panel {
-    margin-top: 0;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0;
-    flex-wrap: wrap;
     width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
     padding: 0 20px;
     box-sizing: border-box;
-}
-
-.control-panel > .control-group:first-child {
-    margin-right: auto;
 }
 
 .control-group {
@@ -343,19 +347,21 @@ h1 {
     }
 
     .buttons {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+    }
+
+    .button-controls-wrapper {
+        flex-direction: column;
+        max-width: 100%;
+        margin-bottom: 20px;
     }
 
     .control-panel {
         flex-direction: column;
+        max-width: 100%;
         gap: 20px;
-        margin-top: 20px;
         justify-content: center;
         padding: 0 10px;
-    }
-
-    .control-panel > .control-group:first-child {
-        margin-right: 0;
     }
 
     .control-group {
