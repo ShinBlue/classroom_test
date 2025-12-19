@@ -80,7 +80,8 @@ const shuffleBtn = document.getElementById('shuffleBtn');
 const resetBtn = document.getElementById('resetBtn');
 const textToggleBtn = document.getElementById('textToggleBtn');
 const cardsPerPageSelect = document.getElementById('cardsPerPageSelect');
-const voiceSelect = document.getElementById('voiceSelect');
+const voiceFemaleRadio = document.getElementById('voiceFemale');
+const voiceMaleRadio = document.getElementById('voiceMale');
 const gridContainer = document.getElementById('gridContainer');
 const cardElement = document.getElementById('card');
 
@@ -223,8 +224,16 @@ cardsPerPageSelect.addEventListener('change', (e) => {
 });
 
 // 音声選択
-voiceSelect.addEventListener('change', (e) => {
-    voiceGender = e.target.value;
+voiceFemaleRadio.addEventListener('change', () => {
+    if (voiceFemaleRadio.checked) {
+        voiceGender = 'female';
+    }
+});
+
+voiceMaleRadio.addEventListener('change', () => {
+    if (voiceMaleRadio.checked) {
+        voiceGender = 'male';
+    }
 });
 
 // ページ読み込み時に初期化

@@ -16,24 +16,6 @@
             <button id="nextBtn" class="btn btn-next">次へ →</button>
         </div>
 
-        <div class="control-panel">
-            <label for="cardsPerPageSelect">表示枚数:</label>
-            <select id="cardsPerPageSelect" class="select">
-                <option value="1">1枚</option>
-                <option value="2">2枚</option>
-                <option value="3">3枚</option>
-                <option value="4">4枚</option>
-                <option value="6">6枚</option>
-                <option value="8">8枚</option>
-            </select>
-            
-            <label for="voiceSelect">声:</label>
-            <select id="voiceSelect" class="select">
-                <option value="female">女性</option>
-                <option value="male">男性</option>
-            </select>
-        </div>
-
         <div class="card-container">
             <div id="card" class="card">
                 <div class="card-image">
@@ -50,6 +32,34 @@
             <button id="textToggleBtn" class="btn btn-text text-on">文字: ON</button>
             <button id="shuffleBtn" class="btn btn-shuffle">シャッフル</button>
             <button id="resetBtn" class="btn btn-reset">リセット</button>
+        </div>
+
+        <div class="control-panel">
+            <div class="control-group">
+                <label for="cardsPerPageSelect">表示枚数:</label>
+                <select id="cardsPerPageSelect" class="select">
+                    <option value="1">1枚</option>
+                    <option value="2">2枚</option>
+                    <option value="3">3枚</option>
+                    <option value="4">4枚</option>
+                    <option value="6">6枚</option>
+                    <option value="8">8枚</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label>声:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="voice" value="female" checked id="voiceFemale">
+                        女性
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="voice" value="male" id="voiceMale">
+                        男性
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
 
