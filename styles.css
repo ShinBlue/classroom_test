@@ -131,6 +131,7 @@ h1 {
     display: flex;
     gap: 15px;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .btn-shuffle {
@@ -177,12 +178,19 @@ h1 {
 }
 
 .control-panel {
-    margin-top: 30px;
+    margin-top: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 60px;
+    gap: 0;
     flex-wrap: wrap;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.control-panel > .control-group:first-child {
+    margin-right: auto;
 }
 
 .control-group {
@@ -334,10 +342,20 @@ h1 {
         font-size: 12px;
     }
 
+    .buttons {
+        margin-bottom: 30px;
+    }
+
     .control-panel {
         flex-direction: column;
         gap: 20px;
         margin-top: 20px;
+        justify-content: center;
+        padding: 0 10px;
+    }
+
+    .control-panel > .control-group:first-child {
+        margin-right: 0;
     }
 
     .control-group {
